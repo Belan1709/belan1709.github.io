@@ -1,0 +1,201 @@
+html {
+	/* min-height:100%; */
+	height:100%;
+}
+
+body {
+	height:100%;
+	margin:0;
+}
+
+#header {
+	font-family:Bahnschrift;
+	text-align:center;
+	/* border:2px solid #000000; */
+	background-color:#a1a1a1;
+	height:15.5%;
+	position:relative;
+	z-index: 2;
+	top: 0;
+}
+
+#header h1 a{
+	margin:0;
+	position:absolute;
+	top:40%;
+	left:50%;
+	z-index: 2;
+	transform: translate(-50%, -50%);
+	color: #111; 
+	text-decoration: none;
+	/* left:50%; */
+}
+#content{
+	height: 100%;
+}
+
+#legend_left {
+	background-color:#ddddee;
+	float:left;
+	width:35%;
+	height:100%;
+	padding: 0px 6px 0px 6px;
+	z-index: 10;
+	overflow:auto;
+}
+
+#legend_left p {
+	margin: 16px 6px 16px 6px;
+}
+
+#legend_left img {
+	width:100%;
+	position:relative;
+	margin-top:22px;
+}
+#legend_left h3 {
+	text-align: center;
+}
+/* Далее оформление меню */
+#navbar ul { 
+	display: none; 
+}
+
+#navbar li:hover ul { 
+	display: block; 
+}
+
+#navbar, #navbar ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+#navbar li { 
+	float: left; 
+}
+#navbar ul li { 
+	float: none;
+}
+#navbar ul {
+  display: none;
+  position: absolute;
+  top: 95%;
+}
+#navbar li {
+  float: left;
+  position: relative;
+}
+#navbar { height: 25px; }
+#navbar ul {
+  display: none;
+  background-color: #f90;
+  position: absolute;
+  top: 100%;
+}
+#navbar li:hover ul { display: block; }
+#navbar, #navbar ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+#navbar {
+  background-color: #474747;
+  position: absolute;
+  width: 1300px;
+  top:83%;
+  height: auto;
+  left:45%;
+  z-index: 10;
+  transform: translate(-50%, -50%);
+}
+#navbar li {
+  float: left;
+  height: 100%;
+  width: auto;
+  display: block;
+  width: 250px;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+}
+#navbar li a {
+  display: block;
+  padding: 5px;
+  width: 250px;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+}
+#navbar ul li { float: none; }
+#navbar li:hover { background-color: #f90; }
+#navbar ul li:hover { background-color: #666; }
+.image-container {
+	background-image:url('../images/aurora.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	padding:0; /*if your want to padding */
+	height: 100%; 
+	width: 100%;
+	object-fit: contain;
+	z-index:-1
+ }
+ .box {
+	width: 60%;
+	height: 88%;
+	margin: -49% 0% 0% 38%;
+	position: absolute;
+  }
+#map {
+	width: 100%;
+	height: 100%;
+  }
+
+#legend {
+	width: 100%; height: auto;
+}
+.element-corner {
+	position: fixed;
+	bottom: 20px;
+	right: 50px;
+	width: 340px;
+	height: 110px;
+	background-color:#ffffff;
+	border:1px solid;
+}
+
+.__loupe {
+    border: 2px solid #fff;
+    position: absolute;
+    z-index: 1;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    display: none;
+    visibility: hidden;
+    cursor: none;
+    user-select: none;
+    touch-action: none;
+    -webkit-tap-highlight-color: rgba(255,255,255,0)
+}
+
+#button-show-legend {
+	position:absolute;
+	width: 10%;
+	height: 7.5%;
+	right: 0;
+    top:10.5%;
+	z-index: 2;
+}
+
+.map-container {
+	float: right;
+}
+
+#button-toggle-loupe {
+	position:absolute;
+	width: 10%;
+	height: 7.5%;
+	right: 0;
+    top:3%;
+	z-index: 2;
+}

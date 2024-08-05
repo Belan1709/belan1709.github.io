@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Атлас Серебрянного ожерелья</title>
+		<link href="style.css" type="text/css" rel="stylesheet">
+		<link href="node_modules/windowjs-master/window.css" type="text/css" rel="stylesheet">
+		<script src="node_modules/loupe-js/dist/index.window.js"></script>
+		<script src="add_loupe.js"></script>
+		<script src="node_modules/windowjs-master/window.js"></script>
+		<script
+		src="https://code.jquery.com/jquery-3.7.1.min.js"
+		integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+		crossorigin="anonymous"></script>
+		<script>
+			// script intializing a window with legend of map
+			var win;
+			var legend_img;
+			window.onload = function(){
+			win = new Window("Легенда", {
+				state: WindowState.NORMAL,
+				size: {
+					width: 500,
+					height: 250
+				},
+				selected: true,
+			});
+
+			win.content.id = "mycontent";
+			win.close()
+			};
+
+			function load_legend(legend_img) {
+				win.content.innerHTML = legend_img;
+			}
+		</script>
+		<script>
+			// function to toggle magnifing glass
+			var k = 0;
+			function click() {
+				let isOn = k % 2 == 1;
+				console.log(k);
+				console.log(isOn);
+				show_loupe(isOn);
+				k = k+ 1;
+			}
+
+			function toggle_loupe(){
+				click()
+			}
+		</script>
+		<script>
+			function readTextFile(file) {
+				var rawFile = new XMLHttpRequest();
+				rawFile.open("GET", file, false);
+				let allText;
+				rawFile.onreadystatechange = function () {
+					if (rawFile.readyState === 4) {
+					if (rawFile.status === 200 || rawFile.status == 0) {
+						allText = rawFile.responseText;
+					}
+					}
+				}
+				rawFile.send(null);
+				return allText;
+			}
+
+			function get_path(event) {
+				const clickedElement = event.target;
+				const folder = clickedElement.parentElement.parentElement.parentElement.id;
+				const map = clickedElement.id;
+				const path = folder + "/" + map + '/';
+				return path;
+			}
+
+			$(document).ready(function() {
+				$("a").click(function(event) {
+					let path = get_path(event); // Capture the returned path
+					let legend_path = path + 'legend.png';
+					legend_img = `<img id="legend" src="${legend_path}" alt="Карта без легенды"/>`;
+					let map_path = path + 'map.png';
+					document.getElementById('map').src = map_path;
+					let content_path = path + 'content.html';
+					let content = readTextFile(content_path);
+					if(typeof content !== "undefined") {
+						document.getElementById('content').innerHTML = content;
+					} else {
+						document.getElementById('content').innerHTML = '<div id="legend_left"><h3>Информативное текстовое содержание</h3></div>';
+					}
+					load_legend(legend_img);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="header">
+			<h1 id="website_name"><a href="index.html">Атлас серебряного ожерелья России</a><br> <span style="color: #a1a1a1;">f</span></h1>
+			<ul id="navbar">
+				<!-- li.id разделов совпадает с папками на локальном хранилище и пишется-->
+				<li id="Introduction">Вводный раздел
+					<ul>
+						<li><a href="#" id="Fis_map">Общегеографическая карта</a></li>
+						<li><a href="#" id="ATD">Административно-территориальное деление</a></li>
+					</ul>
+				</li>
+				<li id="Nature">Природные условия развития туризма
+					<ul>
+						<li><a href="#" id="Земля из Космоса - день">Земля из Космоса - день</a></li>
+						<li><a href="#" id="Земля из Космоса - Ночь">Земля из Космоса - ночь</a></li>
+						<li><a href="#" id="Преобладающие породы">Преобладающие породы</a></li>
+						<li><a href="#" id="Ландшафты ледниковой эпохи">Ландшафты ледниковой эпохи</a></li>
+						<li><a href="#" id="Природные зоны">Природные зоны</a></li>
+						<li><a href="#" id="Залесенность">Залесенность</a></li>
+						<li><a href="#" id="Температура выше 0">Температура выше 0</a></li>
+						<li><a href="#" id="Температура ниже 0">Температура ниже 0</a></li>
+						<li><a href="#" id="Снег">Снег</a></li>
+						<li><a href="#" id="Комфортность">Комфортность</a></li>
+						<li><a href="#" id="Полярные сияния">Полярные сияния</a></li>
+					</ul>
+				</li>
+				<li id="HumanGeo">Социально-экономические условия развития туризма
+					<ul>
+						<li><a href="#" id="Плотность населения">Плотность населения</a></li>
+						<li><a href="#" id="Промышленность">Промышленность</a></li>
+						<li><a href="#" id="transport">Транспорт</a></li>
+						<li><a href="#" id="Средний размер заработной платы">Доходы населения</a></li>
+						<li><a href="#" id="cell_network_megafon">Связь: Мегафон</a></li>
+						<li><a href="#" id="cell_network_mts">Связь: МТС</a></li>
+						<li><a href="#" id="cell_network_beeline">Связь: Билайн</a></li>
+						<li><a href="#" id="cell_network_nothing">Отсутствие связи</a></li>
+					</ul>
+				</li>	
+				<li id="History">Исторический раздел
+					<ul>
+						<li><a href="#" id="1 - Prehist">Северная Русь до 862 г.</a></li>
+						<li><a href="#" id="2 - Rurik">Правление Рюрика</a></li>
+						<li><a href="#" id="3 - Vladimir">Правление Владимира Крестителя</a></li>
+						<li><a href="#" id="4 - Raspad">Раздробленность Руси</a></li>
+						<li><a href="#" id="5 - Nevsky">Правление Александра Невского</a></li>
+						<li><a href="#" id="6 - Zakat">Закат Новгородской республики</a></li>
+						<li><a href="#" id="7 - Ivan">Правление Ивана Грозного</a></li>
+						<li><a href="#" id="8 - Smuta">Смутное время</a></li>
+						<li><a href="#" id="9 - Petr">Правление Петра I</a></li>
+						<li><a href="#" id="10 - Katya">Правление Екатерины Великой</a></li>
+						<li><a href="#" id="11 - CivilWar">Гражданская война</a></li>
+						<li><a href="#" id="12 - Wow">Великая отечественная война</a></li>
+					</ul>
+				</li>
+				<li id="Touristic">Туристический раздел
+					<ul>
+						<li><a href="#" id="Дорога на Север">Дорога на Север</a></li>
+						<li><a href="#" id="Ассоциация">Красивые места</a></li>
+						<li><a href="#" id="Бренды">Бренды городов</a></li>
+						<li><a href="#" id="Охота и рыбалка">Охота и рыбалка</a></li>
+						<li><a href="#" id="Лечебно-оздоровительный туризм">Лечебно-оздоровительный туризм</a></li>
+						<li><a href="#" id="Ethnomap">Этнографический туризм</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div id="content">
+			<div id="legend_left">
+				<h3>О проекте</h3>
+				<p>Атлас был составлен коллективом студентов 1 курса магистратуры кафедры картографии и геоинформатики географического факультета МГУ им. М. В. Ломоносова. Приятного просмотра.</p>
+			</div>
+		</div>
+		<div id="map-container" class="box">
+			<img src="https://www.finnougoria.ru/upload/iblock/021/86456a980aa111ad25d7f3a04569ed9f.jpg" alt="Здесь будет карта" id="map"/>
+		</div>
+		<button id="button-toggle-loupe" onclick="toggle_loupe();">Включить/Выключить лупу</button>
+		<button id="button-show-legend" onclick="win.reload(); win.changeWindowState(WindowState.SHOWN); win.content.innerHTML = legend_img;">Показать легенду</button>
+	</body>
+</html>
