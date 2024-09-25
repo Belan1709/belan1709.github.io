@@ -22,16 +22,11 @@ function show_loupe(isOn){
 	const l = new Loupe(opt)
 	const target = document.getElementById("map")
 
-	function toggle_loupe(isOn) {
-	  console.log(!isOn);
-	  if (!isOn) {
+	if (!isOn) {
 		disableLoupe = enableLoupe(target, target.src, l);
 		console.log('Loupe Enabled');
-	  } else {
+	} else {
 		disableLoupe();
 		console.log('Loupe Disabled');
-	  }
 	}
-  
-	toggle_loupe(isOn);
 }
