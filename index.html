@@ -37,13 +37,11 @@
 		</script>
 		<script type="text/javascript">
 			// function to toggle magnifing glass
-			var k = 0;
+			let isOn = false;
 			function click_loupe() {
-				let isOn = k % 2 == 1;
-				console.log(k);
 				console.log(isOn);
 				show_loupe(isOn);
-				k = k+ 1;
+				isOn = !isOn;
 			}
 		</script>
 		<script type="text/javascript">
@@ -98,6 +96,8 @@
 					<ul>
 						<li><a href="#" id="Fis_map">Общегеографическая карта</a></li>
 						<li><a href="#" id="ATD">Административно-территориальное деление</a></li>
+						<li><a href="#" id="how_to_reach_train">Как добраться поездом?</a></li>
+						<li><a href="#" id="how_to_reach_plain">Как добраться самолётом?</a></li>
 					</ul>
 				</li>
 				<li id="Nature">Природные условия развития туризма
