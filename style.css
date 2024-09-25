@@ -102,7 +102,7 @@ body {
   background-color: #474747;
   position: absolute;
   width: 1300px;
-  top:83%;
+  top:84.5%;
   height: auto;
   left:45%;
   z-index: 10;
@@ -196,6 +196,6 @@ body {
 	width: 10%;
 	height: 7%;
 	right: 0;
-    top:3%;
+    top:2%;
 	z-index: 2;
 }
