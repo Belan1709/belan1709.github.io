@@ -36,19 +36,7 @@
 			}
 		</script>
 		<script type="text/javascript">
-			// function to toggle magnifing glass
-			var k = 0;
-			function click() {
-				let isOn = k % 2 == 1;
-				console.log(k);
-				console.log(isOn);
-				show_loupe(isOn);
-				k = k+ 1;
-			}
-
-			function toggle_loupe(){
-				click()
-			}
+			isOn = false
 		</script>
 		<script type="text/javascript">
 			function readTextFile(file) {
@@ -168,7 +156,7 @@
 		<div id="map-container" class="box">
 			<img src="https://www.finnougoria.ru/upload/iblock/021/86456a980aa111ad25d7f3a04569ed9f.jpg" alt="Здесь будет карта" id="map"/>
 		</div>
-		<button id="button-toggle-loupe" onclick="toggle_loupe();">Включить/Выключить лупу</button>
+		<button id="button-toggle-loupe" onclick="show_loupe(isOn); isOn=!isOn;">Включить/Выключить лупу</button>
 		<button id="button-show-legend" onclick="win.reload(); win.changeWindowState(WindowState.SHOWN); win.content.innerHTML = legend_img;">Показать легенду</button>
 	</body>
 </html>

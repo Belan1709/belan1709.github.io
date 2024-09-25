@@ -1,7 +1,7 @@
 function show_loupe(isOn){
 	const { Loupe, enableLoupe } = window.loupe
 	const useRectangle = new URLSearchParams(window.location.search).get("shape") === "rectangle"
-	const magnification = 1.5
+	const magnification = 1.2
 	const style = {
 		borderColor: "white",
 		boxShadow: "4px 5px 5px 4px rgba(0,0,0,0.5)",
@@ -22,7 +22,7 @@ function show_loupe(isOn){
 	const l = new Loupe(opt)
 	const target = document.getElementById("map")
 
-	function toggle_loupe() {
+	function toggle_loupe(isOn) {
 	  console.log(!isOn);
 	  if (!isOn) {
 		disableLoupe = enableLoupe(target, target.src, l);
@@ -33,5 +33,5 @@ function show_loupe(isOn){
 	  }
 	}
   
-	toggle_loupe();
+	toggle_loupe(isOn);
 }
